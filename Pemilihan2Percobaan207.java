@@ -2,9 +2,9 @@ import java.util.Scanner;
 public class Pemilihan2Percobaan207 {
     public static void main(String[] args) {
         Scanner input07 = new Scanner(System.in);
-        double diskon, total_bayar, harga;
+        double diskon, total_bayar, harga, potongan_harga;
         int pilihan_menu;
-        String member;
+        String member, jenis_pembayaran;
         System.out.println("-------------------------");
         System.out.println("===== MENU KAFE JTI =====");
         System.out.println("-------------------------");
@@ -14,10 +14,16 @@ public class Pemilihan2Percobaan207 {
         System.out.println("-------------------------");
         System.out.print("masukkan angka dari menu yang dipilih = ");
         pilihan_menu = input07.nextInt();
-        System.out.println("Apakah punya member (y/n) ? = ");
+        input07.nextLine();
+        System.out.print("Apakah punya member (y/n) ? = ");
         member = input07.nextLine();
+        System.out.print("Masukkan jenis pembayaran (cash/QRIS) = ");
+        jenis_pembayaran = input07.nextLine();
         System.out.println("-------------------------");
 
+    if (jenis_pembayaran.equalsIgnoreCase("QRIS")) {
+        potongan_harga = 1000;
+    
     if (member.equalsIgnoreCase("y")) { // Menggunakan equalsIgnoreCase untuk membandingkan string
         diskon = 0.10;
         System.out.println("Besar diskon = 10%");
@@ -39,9 +45,10 @@ public class Pemilihan2Percobaan207 {
         }
 
         // Menghitung total bayar setelah diskon
-        total_bayar = harga - (harga * diskon);
+        System.out.println("Potongan harga QRIS " + potongan_harga);
+        total_bayar = harga - (harga * diskon) - potongan_harga;
         System.out.println("Total bayar setelah diskon = " + total_bayar);
-}
+    }
 
         else if (member.equalsIgnoreCase("n")) { // Menggunakan equalsIgnoreCase untuk membandingkan string
             if (pilihan_menu == 1) {
@@ -61,12 +68,14 @@ public class Pemilihan2Percobaan207 {
                 return; // Menghentikan eksekusi lebih lanjut jika pilihan salah
             }
             // Menghitung total bayar
-            System.out.println("Total bayar = " + harga);
+            System.out.println("Potongan harga QRIS " + potongan_harga);
+            System.out.println("Total bayar = " + (harga - potongan_harga));
             } else {
                 System.out.println("Member tidak valid");
             }
             System.out.println("-------------------------");
         
-        input07.close();
+            input07.close();
+        }
     }
 }
